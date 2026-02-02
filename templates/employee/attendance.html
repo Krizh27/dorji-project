@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>My Attendance</h2>
+
+{% if not today_record or not today_record.check_in %}
+    <a href="{{ url_for('employee_checkin') }}">Check In</a>
+{% elif not today_record.check_out %}
+    <a href="{{ url_for('employee_checkout') }}">Check Out</a>
+{% else %}
+    <p>Attendance completed for today</p>
+{% endif %}
+
+<br><br>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Date</th>
+        <th>Check In</th>
+        <th>Check Out</th>
+        <th>Status</th>
+    </tr>
+
+    {% for r in records %}
+    <tr>
+        <td>{{ r.date }}</td>
+        <td>{{ r.check_in or '' }}</td>
+        <td>{{ r.check_out or '' }}</td>
+        <td>{{ r.status }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

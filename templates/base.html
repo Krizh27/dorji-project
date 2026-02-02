@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- theme preload -->
+    <script>
+    if (localStorage.getItem("theme") === "light") {
+        document.documentElement.classList.add("light-theme");
+    }
+    </script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav>
+    <h2>Dayflow HRMS</h2>
+
+    {% if current_user.is_authenticated %}
+        <ul class="nav-actions">
+            {% if current_user.role == "ADMIN" %}
+                <li>
+                    <a href="{{ url_for('admin_dashboard') }}"
+                       class="nav-btn nav-dashboard">
+                        Dashboard
+                    </a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ url_for('employee_dashboard') }}"
+                       class="nav-btn nav-dashboard">
+                        Dashboard
+                    </a>
+                </li>
+            {% endif %}
+
+            <li>
+                <a href="{{ url_for('logout') }}"
+                   class="nav-btn nav-logout">
+                    Logout
+                </a>
+            </li>
+        </ul>
+    {% endif %}
+</nav>
+
+
+
+<!-- ================= CONTENT ================= -->
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<button id="themeToggle" class="theme-toggle">
+    🌙
+</button>
+
+</body>
+<script src="/static/script.js"></script>
+
+<script>
+const btn = document.getElementById("themeToggle");
+
+function setIcon() {
+    if (!btn) return;
+    btn.textContent =
+        document.documentElement.classList.contains("light-theme")
+        ? "☀️"
+        : "🌙";
+}
+
+setIcon();
+
+if (btn) {
+    btn.onclick = () => {
+        document.documentElement.classList.toggle("light-theme");
+        const isLight =
+            document.documentElement.classList.contains("light-theme");
+        localStorage.setItem("theme", isLight ? "light" : "dark");
+        setIcon();
+    };
+}
+</script>
+</html>
