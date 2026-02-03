@@ -5,8 +5,7 @@ from extensions import db, login_manager
 from datetime import date, datetime
 from config import Config
 import os
-port = int(os.environ.get("PORT", 8080))
-app.run(host="0.0.0.0", port=port)
+
 
 def create_app():
     app = Flask(__name__)
@@ -359,6 +358,6 @@ def disable_cache(response):
     response.headers["Expires"] = "0"
     return response
 
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port, debug=True)
