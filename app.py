@@ -4,7 +4,9 @@ from models import User, EmployeeProfile, Attendance, LeaveRequest
 from extensions import db, login_manager
 from datetime import date, datetime
 from config import Config
-
+import os
+port = int(os.environ.get("PORT", 8080))
+app.run(host="0.0.0.0", port=port)
 
 def create_app():
     app = Flask(__name__)
