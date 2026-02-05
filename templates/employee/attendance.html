@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="attendance-page">
 <h2>My Attendance</h2>
 
 {% if not today_record or not today_record.check_in %}
@@ -11,9 +12,9 @@
     <p>Attendance completed for today</p>
 {% endif %}
 
-<br><br>
-
-<table border="1" cellpadding="8">
+</div>
+<div class="table-scroll">
+<table border="1">
     <tr>
         <th>Date</th>
         <th>Check In</th>
@@ -22,12 +23,16 @@
     </tr>
 
     {% for r in records %}
-    <tr>
-        <td>{{ r.date }}</td>
-        <td>{{ r.check_in or '' }}</td>
-        <td>{{ r.check_out or '' }}</td>
-        <td>{{ r.status }}</td>
-    </tr>
-    {% endfor %}
+<tr>
+    <td>{{ r.date.strftime("%d-%m-%y") }}</td>
+    <td>{{ r.check_in.strftime("%H:%M") if r.check_in else "" }}</td>
+    <td>{{ r.check_out.strftime("%H:%M") if r.check_out else "" }}</td>
+    <td>{{ r.status }}</td>
+</tr>
+{% endfor %}
+
 </table>
+</div>
+
 {% endblock %}
+
