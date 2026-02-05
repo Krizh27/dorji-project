@@ -21,38 +21,34 @@
 <nav class="navbar">
     <h2>Dayflow HRMS</h2>
 
-    <div class="nav-right">
-        {% if current_user.is_authenticated %}
-            <ul class="nav-actions">
+   <div class="nav-right">
 
-                {% if current_user.role == "ADMIN" %}
-                <li>
-                    <a href="{{ url_for('admin_dashboard') }}"
-                       class="nav-btn nav-dashboard">
-                        Dashboard
-                    </a>
-                </li>
-                {% else %}
-                <li>
-                    <a href="{{ url_for('employee_dashboard') }}"
-                       class="nav-btn nav-dashboard">
-                        Dashboard
-                    </a>
-                </li>
-                {% endif %}
-
-                <li>
-                    <a href="{{ url_for('logout') }}"
-                       class="nav-btn nav-logout">
-                        Logout
-                    </a>
-                </li>
-                <li>
-                    <button class="theme-toggle theme-toggle-nav">🌙</button>
-                </li>
-            </ul>
+    {% if current_user.is_authenticated %}
+    <ul class="nav-actions">
+        {% if current_user.role == "ADMIN" %}
+        <li>
+            <a href="{{ url_for('admin_dashboard') }}"
+               class="nav-btn nav-dashboard">Dashboard</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="{{ url_for('employee_dashboard') }}"
+               class="nav-btn nav-dashboard">Dashboard</a>
+        </li>
         {% endif %}
-        </div>
+
+        <li>
+            <a href="{{ url_for('logout') }}"
+               class="nav-btn nav-logout">Logout</a>
+        </li>
+    </ul>
+    {% endif %}
+
+    <!-- ✅ ALWAYS VISIBLE -->
+    <button class="theme-toggle theme-toggle-nav">🌙</button>
+
+</div>
+
         </nav>
     
 <!-- ================= CONTENT ================= -->
