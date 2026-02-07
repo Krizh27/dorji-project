@@ -26,12 +26,13 @@
 
     <td>{{ r.date.strftime("%d-%m-%y") }}</td>
 
-    <td>{{ r.check_in.strftime("%H:%M") if r.check_in else "" }}</td>
+    <td>{{ r.check_in.strftime("%I:%M %p") if r.check_in else "" }}</td>
 
-    <td>{{ r.check_out.strftime("%H:%M") if r.check_out else "" }}</td>
+    <td>{{ r.check_out.strftime("%I:%M %p") if r.check_out else "" }}</td>
 
     <td>{{ r.status }}</td>
 </tr>
+
 {% endfor %}
 
 </table>
