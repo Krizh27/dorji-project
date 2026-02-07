@@ -130,7 +130,8 @@ body {
     border: none;
     cursor: pointer;
     font-size: 20px;
-    background: #ffffff99;
+    background: rgba(117, 176, 111, 0.4);
+    border: 1px solid rgba(117, 176, 111, 0.45);
     color: #fff;
     box-shadow: 0 8px 22px rgba(0,0,0,0.35);
 
