@@ -507,6 +507,17 @@ form {
    AUTH PAGES (LOGIN / SIGNUP)
 ========================= */
 .auth-wrapper {
+<<<<<<< HEAD
+    min-height: auto;       /* change from 100vh */
+    display: flex;
+    align-items: flex-start; /* start instead of center */
+    justify-content: center;
+    padding-top: 40px;       /* controlled spacing */
+}
+
+
+
+=======
     min-height: calc(100vh - 70px);
     display: flex;
     align-items: center;
@@ -514,6 +525,7 @@ form {
 }
 
 
+>>>>>>> 065eac34875ccd324d450e96fd87b98a3eab0394
 .auth-card {
     width: 100%;
     max-width: 420px;
@@ -1202,7 +1214,30 @@ td a:hover{
     color: #1e4620;
 }
 
+<<<<<<< HEAD
+/* =========================
+   FLASH MESSAGES
+========================= */
+.flash-message {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+
+    background-color: #e57373;
+    color: #ffffff;
+
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 18px;   /* ADD THIS */
+}
+=======
 
 
+>>>>>>> 065eac34875ccd324d450e96fd87b98a3eab0394
 
 
